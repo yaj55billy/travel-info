@@ -1,0 +1,497 @@
+@charset "utf-8";
+  
+/* 和瀏覽器支援有關，可讓比較舊的瀏覽器支援HTML5 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+@font-face{}
+
+/* fontawesome */
+
+/* fontawesome END */
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+
+
+  /* 文字 END */
+
+  /* media */
+    /* 1200以上 */
+    @media (min-width: 1201px) {
+
+    }
+
+    /* 736~1200 */
+    @media screen and (min-width: 736px) and (max-width: 1200px) {
+      .html iframe{
+        width: 100% !important;
+        height: auto !important;
+      }
+      
+      .html img{
+        width: 100% !important;
+        height: auto !important;
+      }
+      
+      /* 把套件產生的藍線蓋過css */
+      a:focus{
+        outline: 0 !important;
+        outline: 0 !important;
+        outline-offset: 0 !important;
+      }
+      
+    }
+
+    /* 735以內 */
+    @media (max-width: 735px) {
+      .html iframe{
+        width: 100% !important;
+        height: auto !important;
+      }
+      
+      .html img{
+        width: 100% !important;
+        height: auto !important;
+      }
+      
+    }
+
+  /* media END */
+
+
+ 
+
+/* 共用------------------------------- */
+
+.clear-fix{
+  clear: both;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+body{
+  font-family: 'Microsoft JhengHei','sans-serif';
+}
+
+body,h1,h2{
+  /* font-family: 'Roboto', sans-serif; */
+}
+
+.main{
+  width: 100%;
+  min-height: 800px;
+  background-color: #F7F7F7;
+}
+
+
+  /* color */
+
+  .purple{
+    background-color: #8A82CC;
+  }
+
+  .pink{
+    background-color: #FFA782;
+  }
+
+  .yellow{
+    background-color: #F5D005;
+  }
+
+  .blue{
+    background-color: #559AC8;
+  }
+
+  /* color END */ 
+
+/* 共用 END ------------------------------- */
+
+
+/* header------------------------------- */
+
+header{
+  width: 100%;
+  height: 0;
+  padding-bottom: 37%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.banner{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%); 
+  -moz-transform: translateY(-50%); 
+  -o-transform: translateY(-50%);
+
+  width: 450px;
+  margin: auto;
+}
+
+.banner h1{
+  font-size: 40px;
+  color: #FFFFFF;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.banner .location{
+  width: 100%;
+  background: rgba(255,255,255,0.70);
+  border: 2px solid #FFFFFF;
+  border-radius: 3px;
+  padding: 7px 5px;
+  cursor: pointer;
+}
+
+form.search{
+  width: 350px;
+  margin-top: 22px;
+  margin-left: 13px;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.search button{
+  background: none;
+  border: 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.search input{
+  width: 300px;
+  background: none;
+  border: 0;
+  font-size: 18px;
+  font-style: italic;
+  color: rgba(255,255,255,0.50);
+}
+
+.search input:focus{
+  background: none;
+  outline: 0;
+}
+
+.search input::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.50);
+}
+
+.search input:-moz-placeholder { 
+  color: rgba(255,255,255,0.50);
+}
+
+.search input::-moz-placeholder {
+  color: rgba(255,255,255,0.50);
+}
+.search input:-ms-input-placeholder {
+  color: rgba(255,255,255,0.50); 
+}
+
+
+/* header END ------------------------------- */
+
+
+/* index------------------------------- */
+
+
+  /* hot-area */
+  .hot-area{
+    width: 85%;
+    margin: -30px auto 45px;
+    padding: 20px 26px;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
+    border-radius: 5px;
+    z-index: 5;
+    position: relative;
+  }
+
+  .hot-area h3{
+    margin: 0;
+    margin-bottom: 14px;
+    font-size: 18px;
+    color: #000000;
+  }
+
+  .hot-list{
+    width: 100%;
+  }
+
+  .hot-list li{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 8px 25px;
+    margin: 0 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s; 
+    -moz-transition: all 0.3s; 
+    -o-transition: all 0.3s;
+  }
+
+  .hot-list li:hover{
+    opacity: 0.9;
+  }
+  /* hot-area END */
+
+
+
+  .arrow{
+    width: 90%;
+    margin: 0 auto 60px;
+    position: relative;
+  }
+
+  .arrow-pic{
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    border-radius: 99em;
+    border: 2px solid #559AC8;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .arrow-pic .fa-sort-desc{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -3px;
+    margin: auto;
+    text-align: center;
+    font-size: 20px;
+    color: #559AC8;
+  }
+
+
+
+  /* content */
+
+    .content{
+      width: 100%;
+    }
+
+    .content .content-title{
+      text-align: center;
+      font-size: 36px;
+      color: #8A82CC;
+      margin-bottom: 24px;
+    }
+
+
+
+
+
+
+
+    .content .content-list h2{
+      color: #9013FE;
+      line-height: 36px;
+      margin-bottom: 8px;
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .content h2 span{
+      font-weight: bold;
+      color: #7828B4;
+    }
+
+    .content p{
+      font-size: 16px;
+      line-height: 24px;
+      height: 50px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .content-filter{
+      margin-bottom: 24px;
+    }
+
+    .content-filter li{
+      display: inline-block;
+      vertical-align: middle;
+      
+      padding: 5px 16px;
+      margin-right: 3px;
+      font-size: 14px;
+      font-style:italic;
+      color: #9013FE;
+      border: solid 1px #9013FE;
+      border-radius: 99em;
+
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s; 
+      -moz-transition: all 0.3s; 
+      -o-transition: all 0.3s;
+    }
+
+    .content-filter li span{
+      margin-left: 5px;
+      margin-top: 2px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .content-filter li:hover{
+      background-color: #9013FE;
+      color: #fff;
+    }
+    
+    .content-list .list{
+      margin-bottom: 36px;
+      position: relative;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.20);
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s; 
+      -moz-transition: all 0.3s; 
+      -o-transition: all 0.3s;
+    }
+
+    .content-list .list:hover{
+      box-shadow: 0 2px 10px 0 rgba(0,0,0,0.50);
+    }
+
+    .content-list .list .list-img{
+      height: 200px;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+    }
+
+    .list-img .list-img-text{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0.30);
+      color: #fff;
+      padding: 14px 20px;
+    }
+
+    .list-img .list-img-text h3{
+      width: 80%;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0;
+    }
+
+    .list-img .list-img-text .lit-area{
+      width: 16%;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+
+    .content-list .list .list-text{
+      background-color: #FFFFFF;
+      padding: 20px 25px;
+    }
+
+    .list-text ul li{
+      margin-bottom: 16px;
+    }
+
+    .list-text ul li img{
+      margin-right: 5px;
+    }
+    
+    #list-phone img{
+      margin-right: 8px;
+    }
+  
+    .link{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height:100%;
+    }
+
+    /* 頁 */
+    .page_no{
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      color: #9013FE;
+    }
+
+    .page_no button{
+      background: #FFFFFF;
+      border: 1px solid #ECEEEF;
+    }
+
+    .page_prev,.page_ul,.page_next{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    .page_no .page_prev p,.page_no .page_next p{
+      height: auto;
+      overflow: visible;
+      margin-bottom: 0px;
+      line-height: 22px;
+    }
+
+    .page,.page_prev,.page_next{
+      padding: 7px 13px;
+      transition: all 0.3s;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -o-transition: all 0.3s;
+    }
+
+    .page:hover,.page.active{
+      background-color: #9013FE;
+      border: 1px solid #9013FE;
+      color: #fff;
+    }
+
+
+
+
+/* index END ------------------------------- */
+
+
