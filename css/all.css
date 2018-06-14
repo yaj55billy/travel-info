@@ -43,49 +43,7 @@ textarea {
 
   /* 文字 END */
 
-  /* media */
-    /* 1200以上 */
-    @media (min-width: 1201px) {
-
-    }
-
-    /* 736~1200 */
-    @media screen and (min-width: 736px) and (max-width: 1200px) {
-      .html iframe{
-        width: 100% !important;
-        height: auto !important;
-      }
-      
-      .html img{
-        width: 100% !important;
-        height: auto !important;
-      }
-      
-      /* 把套件產生的藍線蓋過css */
-      a:focus{
-        outline: 0 !important;
-        outline: 0 !important;
-        outline-offset: 0 !important;
-      }
-      
-    }
-
-    /* 735以內 */
-    @media (max-width: 735px) {
-      .html iframe{
-        width: 100% !important;
-        height: auto !important;
-      }
-      
-      .html img{
-        width: 100% !important;
-        height: auto !important;
-      }
-      
-    }
-
-  /* media END */
-
+ 
 
  
 
@@ -494,4 +452,65 @@ form.search{
 
 /* index END ------------------------------- */
 
+
+
+
+ /* media */
+
+  @media (max-width: 1200px) {
+  .html iframe{
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  .html img{
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* 把套件產生的藍線蓋過css */
+  a:focus{
+    outline: 0 !important;
+    outline: 0 !important;
+    outline-offset: 0 !important;
+  }
+}
+
+
+  @media (max-width: 800px) {
+
+    .banner h1{
+      margin-bottom: 30px;
+    }
+    .hot-list li{
+      margin-bottom: 18px;
+    }
+  }
+
+  @media (max-width: 560px){
+
+    .banner{
+      width: 85%;
+    }
+
+    .hot-area{
+      margin: 30px auto 45px;
+    }
+
+  }
+
+
+
+
+
+    /* 736~1200 */
+    @media screen and (min-width: 736px) and (max-width: 1200px) {
+
+      
+    }
+
+    /* 735以內 */
+
+
+  /* media END */
 
