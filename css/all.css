@@ -454,29 +454,6 @@ form.search{
 
 
 
-
- /* media */
-
-  @media (max-width: 1200px) {
-  .html iframe{
-    width: 100% !important;
-    height: auto !important;
-  }
-  
-  .html img{
-    width: 100% !important;
-    height: auto !important;
-  }
-  
-  /* 把套件產生的藍線蓋過css */
-  a:focus{
-    outline: 0 !important;
-    outline: 0 !important;
-    outline-offset: 0 !important;
-  }
-}
-
-
   @media (max-width: 800px) {
 
     .banner h1{
@@ -498,18 +475,6 @@ form.search{
     }
 
   }
-
-
-
-
-
-    /* 736~1200 */
-    @media screen and (min-width: 736px) and (max-width: 1200px) {
-
-      
-    }
-
-    /* 735以內 */
 
 
   /* media END */
