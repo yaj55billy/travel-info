@@ -163,38 +163,30 @@ function updateContent(startInfo,endInfo,array){
         console.log(array[i].Picture1);
         console.log(array[i].Name);
         
-        str = str +  `
-        <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="list">
-                <div class="list-img" style="background-image: url('${array[i].Picture1}')">
-                    <div class="list-img-text">
-                        <h3>
-                            ${array[i].Name}
-                        </h3>
-                        <div class="lit-area">
-                            ${array[i].Zone}
-                        </div>
-                    </div>
-                </div>
-                <div class="list-text">
-                    <ul>
-                        <li class="" id="list-time">
-                            <img src="images/icons_clock.png" alt="">
-                            ${array[i].Opentime}
-                        </li>
-                        <li class="" id="list-addr">
-                            <img src="images/icons_pin.png" alt="">
-                            ${array[i].Add}
-                        </li>
-                        <li class="" id="list-phone">
-                            <img src="images/icons_phone.png" alt="">
-                            ${array[i].Tel}
-                        </li>
-                    </ul>
-                    <div>免費參觀</div>
-                </div>
-            </div>
-        </li>`
+        str = str +  '<li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">'+
+            '<div class="list">'+
+                '<div class="list-img" style="background-image: url('+array[i].Picture1+')">'+
+                    '<div class="list-img-text">'+
+                        '<h3>' + array[i].Name +'</h3>'+
+                        '<div class="lit-area">'+ array[i].Zone +'</div>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="list-text">'+
+                    '<ul>'+
+                        '<li class="" id="list-time">'+
+                            '<img src="images/icons_clock.png" alt="">'+ array[i].Opentime +
+                        '</li>'+
+                        '<li class="" id="list-addr">'+
+                            '<img src="images/icons_pin.png" alt="">'+ array[i].Add +
+                        '</li>'+
+                        '<li class="" id="list-phone">'+
+                            '<img src="images/icons_phone.png" alt="">'+array[i].Tel +
+                        '</li>'+
+                    '</ul>'+
+                    '<div>免費參觀</div>'+
+                '</div>'+
+            '</div>'+
+        '</li>'
     }
     content.innerHTML = str;
 
