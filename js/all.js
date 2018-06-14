@@ -84,9 +84,9 @@ xhr.onload = function(){
         pageChange(filterData);
     }
 
-    function bodySlider(){
-        $('html,body').animate({scrollTop:$('#content').offset().top},1000);
-    }
+    // function bodySlider(){
+    //     $('html,body').animate({scrollTop:$('#content').offset().top},1000);
+    // }
 }
 
 // 頁碼
@@ -125,7 +125,7 @@ function pageChange(array){
     
     page.addEventListener('click',function(e){
         e.preventDefault();
-        $('html,body').animate({scrollTop:$('#content').offset().top},1000);
+        // $('html,body').animate({scrollTop:$('#content').offset().top},1000);
         var num = e.target.textContent;
         startInfo = (num-1) * pageNum + 1;
         endInfo = num * pageNum;
