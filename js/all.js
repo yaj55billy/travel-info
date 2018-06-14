@@ -107,7 +107,7 @@ function pageChange(array){
       btnStr += '<button class="page"><a href="#">'+ result.length +'</a></button>';
     }
     
-    page.innerHTML = '<button class="page_prev"><a href="#"><p> « </p></a></button>'+'<div class="page_ul">'+ btnStr +'</div>' + '<button class="page_next"><a href="#"><p> » </p></a></button>';
+    page.innerHTML = '<button class="page_prev"><a href="#"><p> < prev </p></a></button>'+'<div class="page_ul">'+ btnStr +'</div>' + '<button class="page_next"><a href="#"><p> next > </p></a></button>';
 
 
     // 如果總資料超過每頁上限 顯示頁數
@@ -183,7 +183,7 @@ function updateContent(startInfo,endInfo,array){
                             '<img src="images/icons_phone.png" alt="">'+array[i].Tel +
                         '</li>'+
                     '</ul>'+
-                    '<div>免費參觀</div>'+
+                    '<div id="list-ticket"><img src="images/icons_tag.png" alt="">'+array[i].Ticketinfo+'</div>'+
                 '</div>'+
             '</div>'+
         '</li>'
@@ -193,6 +193,13 @@ function updateContent(startInfo,endInfo,array){
 }
 
 
+
+$(".go-top").click(function(){
+
+    $("html,body").animate({scrollTop:0},800);
+    return false;
+
+});
 
 
 

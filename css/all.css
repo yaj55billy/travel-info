@@ -69,8 +69,8 @@ body,h1,h2{
 
 .main{
   width: 100%;
-  min-height: 800px;
   background-color: #F7F7F7;
+  padding-bottom: 40px;
 }
 
 
@@ -185,6 +185,31 @@ form.search{
 /* header END ------------------------------- */
 
 
+/* footer ------------------------------- */
+
+footer{
+  background: #559AC8;
+  padding: 24px 0;
+}
+
+.footer-text {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer-text p:nth-child(1){
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.footer-text p:nth-child(2){
+  color: #FFD366;
+}
+
+/* footer END ------------------------------- */
+
+
 /* index------------------------------- */
 
 
@@ -245,8 +270,18 @@ form.search{
     margin: 0 auto;
     border-radius: 99em;
     border: 2px solid #559AC8;
+    background-color: #F7F7F7;
     position: relative;
     cursor: pointer;
+    z-index: 5;
+  }
+
+  .arrow-line{
+    width: 100%;
+    border-top: dashed 2px #559AC9;
+    position: absolute;
+    top: 12px;
+    z-index: 1;
   }
 
   .arrow-pic .fa-sort-desc{
@@ -386,6 +421,7 @@ form.search{
     .content-list .list .list-text{
       background-color: #FFFFFF;
       padding: 20px 25px;
+      position: relative;
     }
 
     .list-text ul li{
@@ -395,9 +431,23 @@ form.search{
     .list-text ul li img{
       margin-right: 5px;
     }
+
+    #list-phone{
+      margin-bottom: 0px;
+    }
     
     #list-phone img{
       margin-right: 8px;
+    }
+
+    #list-ticket{
+      position: absolute;
+      bottom: 20px;
+      right: 25px;
+    }
+
+    #list-ticket img{
+      margin-right: 5px;
     }
   
     .link{
@@ -413,12 +463,12 @@ form.search{
       width: 100%;
       text-align: center;
       font-size: 16px;
-      color: #9013FE;
+      color: #4A4A4A;
     }
 
     .page_no button{
-      background: #FFFFFF;
-      border: 1px solid #ECEEEF;
+      background: none;
+      border: 0;
     }
 
     .page_prev,.page_ul,.page_next{
@@ -442,11 +492,15 @@ form.search{
     }
 
     .page:hover,.page.active{
-      background-color: #9013FE;
-      border: 1px solid #9013FE;
-      color: #fff;
+      color: #559AC8;
     }
 
+
+    .go-top{
+      position: fixed;
+      bottom: 10%;
+      right: 5%;
+    }
 
 
 
@@ -456,24 +510,52 @@ form.search{
 
   @media (max-width: 800px) {
 
+    h3{
+      font-size: 20px;
+    }
+
     .banner h1{
       margin-bottom: 30px;
     }
     .hot-list li{
       margin-bottom: 18px;
     }
+    .list-text ul li{
+      margin-bottom: 10px;
+    }
+    .list-img .list-img-text .lit-area{
+      font-size: 13px;
+    }
   }
 
   @media (max-width: 560px){
 
+    .banner h1{
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
     .banner{
-      width: 85%;
+      width: 75%;
+    }
+
+    .banner .location{
+      padding: 5px;
     }
 
     .hot-area{
       margin: 30px auto 45px;
+      padding: 20px;
     }
 
+    .hot-list li{
+      font-size: 16px;
+      padding: 6px 18px;
+      margin-bottom: 12px;
+    }
+    .arrow{
+      margin-bottom: 40px;
+    }
   }
 
 
