@@ -95,56 +95,113 @@ xhr.onload = function(){
     }
 }
 
-// 頁碼
+// ---------------------------------------  以上為選擇行政區跟熱門行政區，選擇後往下pageChange();
+
+
+// --------------------------------------- 頁碼的處理
 var page = document.querySelector(".page_no");
 
 var pageNum = 6;
 var nowPage = 1;
 
 function pageChange(array){
-    // console.log(array);
+
     var result = [];
     var btnStr = "";
-
-    for(var i=0 ; i<array.length ; i+=pageNum){
-
-      result.push(array.slice(i,i+pageNum));
-      console.log(result.length);
-      btnStr += '<button class="page"><a href="#">'+ result.length +'</a></button>';
-    }
     
+    for(var i=0 ; i<array.length ; i+=pageNum){
+        // array.slice(i,i+pageNum),做一新陣列，範圍從 i到 i+pageNum
+        result.push(array.slice(i,i+pageNum));  
+        btnStr += '<button class="page"><a href="#">'+ result.length +'</a></button>';
+    }
     page.innerHTML = '<button class="page_prev"><a href="#"><p> < prev </p></a></button>'+'<div class="page_ul">'+ btnStr +'</div>' + '<button class="page_next"><a href="#"><p> next > </p></a></button>';
 
+    // --------------- page.innerHTML 為組頁碼
 
-    // 如果總資料超過每頁上限 顯示頁數
+
+    var resultLen = result.length;
+    
     if (array.length > pageNum){
         page.style.display = "block";
-      
     }else{
         page.style.display = "none";
     }
+    // --------------------------  判斷顯示頁數
+
 
     var startInfo = (nowPage-1) * pageNum + 1; 
     //開始顯示的資料
     var endInfo = nowPage * pageNum; 
     //最後顯示的資料
-    
-    page.addEventListener('click',function(e){
-        e.preventDefault();
-        $('html,body').animate({scrollTop:$('#content').offset().top},1000);
-        var num = e.target.textContent;
-        startInfo = (num-1) * pageNum + 1;
-        endInfo = num * pageNum;
-        updateContent(startInfo,endInfo,array);
-    });
 
-    if(nowPage ==1){
-        console.log('第一頁');
+    thisPage(startInfo,endInfo,array,resultLen);
+  }
+
+  // --------------------------------------- 頁碼的處理 END  往下為判斷點擊的是數字頁碼、Next Prev
+
+
+  function thisPage(startInfo,endInfo,array,resultLen){
+
+    prevAndNext(1); //一點擊後，判定為第一頁
+
+    var pageChild = document.querySelectorAll(".page_no .page"); 
+    
+    
+    for(i= 0 ;i<pageChild.length;i++){
+        pageChild[i].addEventListener('click',function(e){
+            e.preventDefault();
+            $('html,body').animate({scrollTop:$('#content').offset().top},1000);
+            var num = e.target.textContent;
+            startInfo = (num-1) * pageNum + 1;
+            endInfo = num * pageNum;
+            console.log(startInfo);
+            console.log(endInfo);
+            prevAndNext(num);
+            updateContent(startInfo,endInfo,array);
+        });
     }
 
-    console.log(array);
-    updateContent(startInfo,endInfo,array);
     
+    function prevAndNext(num){
+
+        var prevBtn = document.querySelector('.page_prev');
+        var nextBtn = document.querySelector('.page_next');
+
+        // 偵測最後一頁
+        if(num == resultLen){
+            nextBtn.style.display= 'none';
+            prevBtn.style.display= 'inline-block';
+
+            prevBtn.addEventListener('click',function(e){
+                num = Number(num) -1;
+                startInfo = (num-1) * pageNum + 1;
+                endInfo = num * pageNum;
+                $('html,body').animate({scrollTop:$('#content').offset().top},1000);
+                updateContent(startInfo,endInfo,array);
+            });
+        } else{
+            nextBtn.style.display= 'inline-block';
+        }
+
+        // 偵測第一頁
+        if (num == 1){
+            //初始渲染
+            updateContent(startInfo,endInfo,array);
+
+            prevBtn.style.display= 'none';
+            nextBtn.style.display= 'inline-block';
+            
+            nextBtn.addEventListener('click',function(){
+                num = Number(num) +1;
+                startInfo = (num-1) * pageNum + 1;
+                endInfo = num * pageNum;
+                $('html,body').animate({scrollTop:$('#content').offset().top},1000);
+                updateContent(startInfo,endInfo,array);
+            });
+        } else{
+            prevBtn.style.display= 'inline-block';
+        }
+    }
   }
 
 
@@ -154,9 +211,6 @@ var content = document.querySelector('.content-list');
 // 組字串
 function updateContent(startInfo,endInfo,array){
 
-    console.log(startInfo);
-    console.log(endInfo);
-    
     var str = '';
 
     // 如果資料未滿4筆時，則將endInfo帶入陣列長度，例如array只有2筆資料
@@ -164,11 +218,9 @@ function updateContent(startInfo,endInfo,array){
     if(array.length < endInfo){
         endInfo = array.length;
     }
-    
+
     for (var i =startInfo-1; i< endInfo; i++) {
-        console.log(array[i].Picture1);
-        console.log(array[i].Name);
-        
+
         str = str +  '<li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">'+
             '<div class="list">'+
                 '<div class="list-img" style="background-image: url('+array[i].Picture1+')">'+
@@ -207,8 +259,6 @@ $(".go-top").click(function(){
 
 });
 
-
-// document.querySelector('.main').textContent = 'Hello World!';
 
 
 
