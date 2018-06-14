@@ -15,13 +15,13 @@ xhr.onload = function(){
     //將地區選擇存取，如果發生change事件則執行areaFilter
     var location = document.getElementById('location');
     location.addEventListener('change',areaFilter);
-    // location.addEventListener('change',bodySlider);
+    location.addEventListener('change',bodySlider);
 
     // 點擊熱門區域，click後執行areaFilter
     var hotBtn = document.querySelectorAll('.hot-list li');
     for(var i = 0 ; i<hotBtn.length; i++){
         hotBtn[i].addEventListener('click',hotFilter);
-        // hotBtn[i].addEventListener('click',bodySlider);
+        hotBtn[i].addEventListener('click',bodySlider);
     }
 
     var contentTitle = document.querySelectorAll('.content-title');
@@ -84,9 +84,9 @@ xhr.onload = function(){
         pageChange(filterData);
     }
 
-    // function bodySlider(){
-    //     $('html,body').animate({scrollTop:$('#content').offset().top},1000);
-    // }
+    function bodySlider(){
+        $('html,body').animate({scrollTop:$('#content').offset().top},1000);
+    }
 }
 
 // 頁碼
@@ -125,7 +125,7 @@ function pageChange(array){
     
     page.addEventListener('click',function(e){
         e.preventDefault();
-        // $('html,body').animate({scrollTop:$('#content').offset().top},1000);
+        $('html,body').animate({scrollTop:$('#content').offset().top},1000);
         var num = e.target.textContent;
         startInfo = (num-1) * pageNum + 1;
         endInfo = num * pageNum;
