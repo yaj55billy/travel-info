@@ -15,13 +15,13 @@ xhr.onload = function(){
     //將地區選擇存取，如果發生change事件則執行areaFilter
     var location = document.getElementById('location');
     location.addEventListener('change',areaFilter);
-    location.addEventListener('change',bodySlider);
+    // location.addEventListener('change',bodySlider);
 
     // 點擊熱門區域，click後執行areaFilter
     var hotBtn = document.querySelectorAll('.hot-list li');
     for(var i = 0 ; i<hotBtn.length; i++){
         hotBtn[i].addEventListener('click',hotFilter);
-        hotBtn[i].addEventListener('click',bodySlider);
+        // hotBtn[i].addEventListener('click',bodySlider);
     }
 
     var contentTitle = document.querySelectorAll('.content-title');
