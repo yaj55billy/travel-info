@@ -208,7 +208,8 @@ $(".go-top").click(function(){
 });
 
 
-document.write("Hello World!");
+document.querySelector('.main').textContent = 'Hello World!';
+
 
 
 
