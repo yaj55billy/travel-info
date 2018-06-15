@@ -273,7 +273,7 @@ footer{
     border: 2px solid #559AC8;
     background-color: #F7F7F7;
     position: relative;
-    cursor: pointer;
+    /* cursor: pointer; */
     z-index: 5;
   }
 

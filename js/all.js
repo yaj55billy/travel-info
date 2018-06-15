@@ -1,11 +1,5 @@
 
 
-// var dataTest = JSON.parse(sourceData);
-
-// console.log(JSON.parse(sourceData));
-
-
-
 var xhr = new XMLHttpRequest();
 
 xhr.open('get','https://data.kcg.gov.tw/api/action/datastore_search?resource_id=92290ee5-6e61-456f-80c0-249eae2fcc97',true);
@@ -21,13 +15,11 @@ xhr.onload = function(){
     //將地區選擇存取，如果發生change事件則執行areaFilter
     var location = document.getElementById('location');
     location.addEventListener('change',areaFilter);
-    location.addEventListener('change',bodySlider);
 
     // 點擊熱門區域，click後執行areaFilter
     var hotBtn = document.querySelectorAll('.hot-list li');
     for(var i = 0 ; i<hotBtn.length; i++){
         hotBtn[i].addEventListener('click',hotFilter);
-        hotBtn[i].addEventListener('click',bodySlider);
     }
 
     var contentTitle = document.querySelectorAll('.content-title');
@@ -61,7 +53,7 @@ xhr.onload = function(){
         for(var i =0; i<contentTitle.length; i++){
             contentTitle[i].textContent = locationValue;
         }
-        pageChange(filterData);
+        pageProcess(filterData);
     }
 
     function hotFilter(e){
@@ -87,24 +79,21 @@ xhr.onload = function(){
         for(var i =0; i<contentTitle.length; i++){
             contentTitle[i].textContent = hotFilterArea;
         }
-        pageChange(filterData);
+        pageProcess(filterData);
     }
 
-    function bodySlider(){
-        $('html,body').animate({scrollTop:$('#content').offset().top},1000);
-    }
 }
 
-// ---------------------------------------  以上為選擇行政區跟熱門行政區，選擇後往下pageChange();
+// ---------------------------------------  以上為選擇行政區跟熱門行政區，選擇後往下pageProcess();
 
 
 // --------------------------------------- 頁碼的處理
 var page = document.querySelector(".page_no");
 
-var pageNum = 6;
+var pageNum = 4;
 var nowPage = 1;
 
-function pageChange(array){
+function pageProcess(array){
 
     var result = [];
     var btnStr = "";
@@ -134,79 +123,90 @@ function pageChange(array){
     var endInfo = nowPage * pageNum; 
     //最後顯示的資料
 
-    thisPage(startInfo,endInfo,array,resultLen);
+    pageJudgment(startInfo,endInfo,array,resultLen);
   }
 
-  // --------------------------------------- 頁碼的處理 END  往下為判斷點擊的是數字頁碼、Next Prev
+  // --------------------------------------- 頁碼的處理 END  往下為 判斷點擊的項目
 
+  
+  function pageJudgment(startInfo,endInfo,array,resultLen){
 
-  function thisPage(startInfo,endInfo,array,resultLen){
-
-    prevAndNext(1); //一點擊後，判定為第一頁
-
+    numJudgment(1); //一點擊後，判定為第一頁
     var pageChild = document.querySelectorAll(".page_no .page"); 
-    
+    var prevBtn = document.querySelector('.page_prev');
+    var nextBtn = document.querySelector('.page_next');
+    var num = 1; //num初始
     
     for(i= 0 ;i<pageChild.length;i++){
         pageChild[i].addEventListener('click',function(e){
             e.preventDefault();
-            $('html,body').animate({scrollTop:$('#content').offset().top},1000);
-            var num = e.target.textContent;
+            num = e.target.textContent;
             startInfo = (num-1) * pageNum + 1;
             endInfo = num * pageNum;
-            console.log(startInfo);
-            console.log(endInfo);
-            prevAndNext(num);
+            numJudgment(num);
             updateContent(startInfo,endInfo,array);
         });
     }
 
-    
-    function prevAndNext(num){
+    prevBtn.addEventListener('click',function(e){
+        num = Number(num) -1;
+        startInfo = (num-1) * pageNum + 1;
+        endInfo = num * pageNum;
+        numJudgment(num);
+        
+    });
+
+    nextBtn.addEventListener('click',function(){
+        num = Number(num) +1;
+        startInfo = (num-1) * pageNum + 1;
+        endInfo = num * pageNum;
+        console.log(num);
+        numJudgment(num);
+    });
+
+    function numJudgment(num){
 
         var prevBtn = document.querySelector('.page_prev');
         var nextBtn = document.querySelector('.page_next');
+        var pageChild = document.querySelectorAll(".page_no .page"); 
 
         // 偵測最後一頁
         if(num == resultLen){
             nextBtn.style.display= 'none';
             prevBtn.style.display= 'inline-block';
-
-            prevBtn.addEventListener('click',function(e){
-                num = Number(num) -1;
-                startInfo = (num-1) * pageNum + 1;
-                endInfo = num * pageNum;
-                $('html,body').animate({scrollTop:$('#content').offset().top},1000);
-                updateContent(startInfo,endInfo,array);
-            });
-        } else{
-            nextBtn.style.display= 'inline-block';
+            addActive(num);
+            updateContent(startInfo,endInfo,array);
         }
 
         // 偵測第一頁
         if (num == 1){
             //初始渲染
-            updateContent(startInfo,endInfo,array);
-
             prevBtn.style.display= 'none';
             nextBtn.style.display= 'inline-block';
-            
-            nextBtn.addEventListener('click',function(){
-                num = Number(num) +1;
-                startInfo = (num-1) * pageNum + 1;
-                endInfo = num * pageNum;
-                $('html,body').animate({scrollTop:$('#content').offset().top},1000);
-                updateContent(startInfo,endInfo,array);
-            });
-        } else{
+            addActive(num);
+            updateContent(startInfo,endInfo,array);
+        } 
+
+        if(num>1 && num<resultLen){
             prevBtn.style.display= 'inline-block';
+            nextBtn.style.display= 'inline-block';
+            addActive(num);
+            updateContent(startInfo,endInfo,array);
+        }
+
+        function addActive(num){
+            for(i= 0 ;i<pageChild.length;i++){
+                if(num == pageChild[i].textContent){
+                    pageChild[i].setAttribute('class','page active');
+                } else{
+                    pageChild[i].setAttribute('class','page');
+                }
+            }
         }
     }
   }
 
-
 var content = document.querySelector('.content-list');
-
 
 // 組字串
 function updateContent(startInfo,endInfo,array){
@@ -247,16 +247,14 @@ function updateContent(startInfo,endInfo,array){
         '</li>'
     }
     content.innerHTML = str;
+    $('html,body').animate({scrollTop:$('#content').offset().top},1000);
 
 }
 
 
-
 $(".go-top").click(function(){
-
     $("html,body").animate({scrollTop:0},800);
     return false;
-
 });
 
 
